@@ -1,7 +1,7 @@
 <script>
   import FullDayCard from './components/FullDay.svelte';
   import WeekCard from './components/Week.svelte';
-
+  const notSoSecretSecretKeyANymore = "43f8873828754a84b67172205232204";
   let activeTab = 'week-tab'
   let selected_city = 'London'
   let error;
@@ -13,7 +13,7 @@
 
   async function fetchCurrentWeather(param){
     let desired_outcome = null
-    await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_API_KEY}&q=${selected_city}&days=1&aqi=yes&alerts=no`, {mode: 'cors'})
+    await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${notSoSecretSecretKeyANymore}&q=${selected_city}&days=1&aqi=yes&alerts=no`, {mode: 'cors'})
       .then((resp) => {return resp.json()})
       .then((obj) => {
         switch(param){
@@ -45,7 +45,7 @@
     let currentTime = new Date().getHours();
     let day = 0
     
-    await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_API_KEY}&q=${selected_city}&days=2&aqi=yes&alerts=no`, {mode: 'cors'})
+    await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${notSoSecretSecretKeyANymore}&q=${selected_city}&days=2&aqi=yes&alerts=no`, {mode: 'cors'})
       .then((resp) => {return resp.json()})
       .then((d) => {
         console.log(d)
@@ -67,7 +67,7 @@
 
   async function fetchWeatherForecast5() {
     let forecast = []
-    await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_API_KEY}&q=${selected_city}&days=6&aqi=yes&alerts=no`, {mode: 'cors'})
+    await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${notSoSecretSecretKeyANymore}&q=${selected_city}&days=6&aqi=yes&alerts=no`, {mode: 'cors'})
       .then((resp) => {return resp.json()})
       .then((d) => {
         for(let i=1; i<6; i++){
@@ -124,7 +124,7 @@
   const updateWeather = async() => {
     let everythingOk = false
     error = true // Has a bug of for a moment showing an error with the input, can be solved better but I'm too lazy.
-    await fetch(`https://api.weatherapi.com/v1/current.json?key=${import.meta.env.VITE_API_KEY}&q=${selected_city}`, {mode: 'cors'})
+    await fetch(`https://api.weatherapi.com/v1/current.json?key=${notSoSecretSecretKeyANymore}&q=${selected_city}`, {mode: 'cors'})
       .then((resp) => {
         console.log(resp.ok)
         if(resp.ok){
