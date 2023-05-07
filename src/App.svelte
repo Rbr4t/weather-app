@@ -70,7 +70,7 @@
     await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_API_KEY}&q=${selected_city}&days=6&aqi=yes&alerts=no`, {mode: 'cors'})
       .then((resp) => {return resp.json()})
       .then((d) => {
-        for(let i=1; i<6; i++){
+        for(let i=1; i<2; i++){
           
           const obj = d.forecast.forecastday[i]
           const date = new Date(obj.date);
